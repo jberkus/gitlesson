@@ -1,0 +1,33 @@
+gitlesson [action] [parameter]
+
+setup {directory}:
+	{directory} is the project name
+	must contain README.md and LICENSE files
+		git init project if .git not found
+	creates directory project-lessons/
+	creates project-lessons/ignore-files
+	git init project-lessons
+
+save ##
+	copies all files to project-lessons/##/
+	if ## not given, finds next lesson
+	commit project-lessons
+
+load ##
+	clears current dir
+	copies lessons/## into project directory
+
+patch ##
+	diffs cwd with lessons/##
+	patches lesson## and all later lessons
+	commit project-lessons
+
+build
+	resets project/ repo to initial commit
+	adds one lesson at a time to project/ repo
+	commits each with tag LESSON##
+	ignores ignore-files
+
+deconstruct {project}
+	trolls through history for each tag LESSON##
+	checks each out into a separate directory
